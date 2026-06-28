@@ -1,5 +1,6 @@
 package Project.ai_workspace_platform.Entity;
 
+import Project.ai_workspace_platform.enums.SubscriptionStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ public class Subscription {
     private Long id;
     private User user;
     private Plan plan;
+    private SubscriptionStatus subscriptionStatus;
     private String stripeCustomerId;
     private String stripeSubscriptionId;
     private Instant currentPeriodStart;
