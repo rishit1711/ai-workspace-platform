@@ -1,4 +1,4 @@
-package Project.ai_workspace_platform.Entity;
+package Project.ai_workspace_platform.entity;
 
 import lombok.Getter;
 import lombok.Setter;

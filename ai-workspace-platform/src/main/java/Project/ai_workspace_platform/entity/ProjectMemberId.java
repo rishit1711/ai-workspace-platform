@@ -1,4 +1,4 @@
-package Project.ai_workspace_platform.Entity;
+package Project.ai_workspace_platform.entity;
 
 public class ProjectMemberId {
     private Long projectId;

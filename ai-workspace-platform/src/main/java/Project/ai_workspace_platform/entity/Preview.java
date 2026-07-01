@@ -1,4 +1,4 @@
-package Project.ai_workspace_platform.Entity;
+package Project.ai_workspace_platform.entity;
 
 import Project.ai_workspace_platform.enums.PreviewStatus;
 import lombok.AccessLevel;
