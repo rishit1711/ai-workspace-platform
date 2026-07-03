@@ -4,10 +4,7 @@ import Project.ai_workspace_platform.dto.Files.FileNode;
 import Project.ai_workspace_platform.service.FileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +20,12 @@ public class FileController {
         Long userId=1L;
         return ResponseEntity.ok(fileService.getFileTree(userId,projectId));
     }
+    @GetMapping("/{*path}")
+    public ResponseEntity<FileContentResponse> getFileData(@PathVariable Long projectId, @RequestBody String path){
+        Long userId=1L;
+        return ResponseEntity.ok(fileService.getMetaData(projectId,path,userId));
+    }
+
 
 
 
