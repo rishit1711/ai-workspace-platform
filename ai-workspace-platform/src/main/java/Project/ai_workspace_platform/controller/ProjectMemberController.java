@@ -30,9 +30,20 @@ public class ProjectMemberController {
 
 
     @PatchMapping("/{memberId}")
-    public ResponseEntity<MemberResponse> updateRole(@PathVariable Long projectId, @PathVariable Long userId, @PathVariable@RequestBody UpdateRoleRequest roleRequest){
-        return ResponseEntity.ok(projectMemberService.UpdateRoleOfMember(projectId,userId,roleRequest));
+    public ResponseEntity<MemberResponse> updateRole(@PathVariable Long projectId, @PathVariable Long memberId,@RequestBody UpdateRoleRequest roleRequest){
+
+        Long userId=1L;
+        return ResponseEntity.ok(projectMemberService.UpdateRoleOfMember(projectId,memberId,roleRequest,userId));
     }
+
+    @DeleteMapping("/{memberId}")
+    public ResponseEntity<Void> deleteMember(@PathVariable Long projectId, @PathVariable Long memberId){
+
+        Long userId=1L;
+        projectMemberService.DeleteMemberFromProject(projectId,memberId,userId);
+        return ResponseEntity.noContent().build();
+    }
+
 
 
 
