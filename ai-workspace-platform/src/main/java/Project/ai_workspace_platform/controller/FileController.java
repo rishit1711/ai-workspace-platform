@@ -1,5 +1,6 @@
 package Project.ai_workspace_platform.controller;
 
+import Project.ai_workspace_platform.dto.Files.FileContentResponse;
 import Project.ai_workspace_platform.dto.Files.FileNode;
 import Project.ai_workspace_platform.service.FileService;
 import lombok.RequiredArgsConstructor;
