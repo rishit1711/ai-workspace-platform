@@ -22,7 +22,7 @@ public class Project {
     @ManyToOne
     @JoinColumn(name = "owner_id",nullable = false)
     private User owner;
-    private Boolean isPublic;
+    private Boolean isPublic=false;
     @CreationTimestamp
     private Instant createdAt;
     private Instant deletedAt;
