@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +28,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<ProjectSummaryResponse> getMyProjects(Long userId) {
-        return List.of();
+        return projectRepository.findAllAccessibleByUser(userId)
+                .stream().map(project -> projectMapper.toProjectSummaryResponse(project))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -42,6 +45,7 @@ public class ProjectServiceImpl implements ProjectService {
          Project project = Project.builder()
                          .name(projectRequest.name())
                                  .owner(owner)
+                 .isPublic(false)
                  .build();
 
          projectRepository.save(project);

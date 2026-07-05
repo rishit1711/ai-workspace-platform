@@ -1,6 +1,7 @@
 package Project.ai_workspace_platform.mapper;
 
 import Project.ai_workspace_platform.dto.Project.ProjectResponse;
+import Project.ai_workspace_platform.dto.Project.ProjectSummaryResponse;
 import Project.ai_workspace_platform.entity.Project;
 import org.mapstruct.Mapper;
 
@@ -8,5 +9,7 @@ import org.mapstruct.Mapper;
 public interface ProjectMapper {
 
     ProjectResponse toProjectResponse(Project project);
+
+    ProjectSummaryResponse toProjectSummaryResponse(Project project);
 
 }
