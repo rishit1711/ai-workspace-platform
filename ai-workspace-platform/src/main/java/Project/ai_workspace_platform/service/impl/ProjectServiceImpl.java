@@ -34,8 +34,10 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ProjectResponse getProjectMyId(Long id, Long userId) {
-        return null;
+    public ProjectResponse getProjectById(Long id, Long userId) {
+        Project project = projectRepository.findAccessibleProjectById(id,userId).orElseThrow(()->  new RuntimeException("Project Not found"));
+        return projectMapper.toProjectResponse(project);
+
     }
 
     @Override
