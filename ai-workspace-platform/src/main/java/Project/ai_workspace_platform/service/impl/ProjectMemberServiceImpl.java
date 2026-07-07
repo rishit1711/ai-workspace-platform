@@ -1,15 +1,20 @@
 package Project.ai_workspace_platform.service.impl;
 
+import Project.ai_workspace_platform.Repository.ProjectMemberRepository;
 import Project.ai_workspace_platform.dto.member.MemberRequest;
 import Project.ai_workspace_platform.dto.member.MemberResponse;
 import Project.ai_workspace_platform.dto.member.UpdateRoleRequest;
 import Project.ai_workspace_platform.service.ProjectMemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProjectMemberServiceImpl implements ProjectMemberService {
+
+    private final ProjectMemberRepository projectMemberRepository;
     @Override
     public List<MemberResponse> getProjectMembers(Long projectId, Long userId) {
         return List.of();
