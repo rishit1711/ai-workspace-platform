@@ -21,13 +21,13 @@ public class ProjectController {
 
     @GetMapping
     public ResponseEntity<List<ProjectSummaryResponse>> getprojects(){
-        Long userId = 1L;   // later spring security se current logged in user mil jayega
+        Long userId = 1L;   // later spring security se current logged-in user mil jayega
         return ResponseEntity.ok(projectService.getMyProjects(userId));
     }
     @GetMapping("/{id}")
     public ResponseEntity<ProjectResponse> getProject(@PathVariable Long id){
         Long userId=1L;
-        return ResponseEntity.ok(projectService.getProjectMyId(id,userId));
+        return ResponseEntity.ok(projectService.getProjectById(id,userId));
     }
 
     @PostMapping

@@ -57,7 +57,11 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectResponse updateProject(Long id, ProjectRequest projectRequest, Long userId) {
-        return null;
+        Project project = projectRepository.findAccessibleProjectById(id,userId).orElseThrow();
+
+        project.setName(projectRequest.name());
+        projectRepository.save(project);
+        return projectMapper.toProjectResponse(project);
     }
 
     @Override
