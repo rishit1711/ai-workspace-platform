@@ -66,6 +66,16 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void softDelete(Long id, Long userId) {
+        Project project = projectRepository.findAccessibleProjectById(id,userId).orElseThrow();
+        if(!project.getOwner().getId().equals(userId)){
+            throw new RuntimeException("You are the Owner of the Project");
+
+        }
+        project.setDeletedAt(Instant.now());
+        projectRepository.save(project);
+
+
+
 
     }
 }
