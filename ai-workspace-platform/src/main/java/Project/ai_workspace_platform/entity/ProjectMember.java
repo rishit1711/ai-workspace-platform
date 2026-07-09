@@ -16,8 +16,11 @@ import java.time.Instant;
 public class ProjectMember {
     @EmbeddedId
     private ProjectMemberId id;
-
+    @ManyToOne
+    @MapsId("projectId")
     private Project project;
+    @ManyToOne
+    @MapsId("userId")
     private User user;
     private ProjectRole role;
     private Instant invitedAt;
