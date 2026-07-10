@@ -1,6 +1,6 @@
 package Project.ai_workspace_platform.controller;
 
-import Project.ai_workspace_platform.dto.member.MemberRequest;
+import Project.ai_workspace_platform.dto.member.InviteMemberRequest;
 import Project.ai_workspace_platform.dto.member.MemberResponse;
 import Project.ai_workspace_platform.dto.member.UpdateRoleRequest;
 import Project.ai_workspace_platform.service.ProjectMemberService;
@@ -23,7 +23,7 @@ public class ProjectMemberController {
         return ResponseEntity.ok(projectMemberService.getProjectMembers(projectId,userId));
     }
     @PostMapping
-    public ResponseEntity<MemberResponse> addMember(@PathVariable Long projectId,@RequestBody MemberRequest memberRequest){
+    public ResponseEntity<MemberResponse> addMember(@PathVariable Long projectId,@RequestBody InviteMemberRequest memberRequest){
         Long userId=1L;
         return ResponseEntity.status(HttpStatus.CREATED).body(projectMemberService.addProjectMember(projectId,userId,memberRequest));
     }

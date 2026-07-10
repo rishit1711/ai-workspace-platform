@@ -2,18 +2,21 @@ package Project.ai_workspace_platform.service.impl;
 
 import Project.ai_workspace_platform.Repository.ProjectMemberRepository;
 import Project.ai_workspace_platform.Repository.ProjectRepository;
-import Project.ai_workspace_platform.dto.member.MemberRequest;
+import Project.ai_workspace_platform.Repository.UserRepository;
+import Project.ai_workspace_platform.dto.member.InviteMemberRequest;
 import Project.ai_workspace_platform.dto.member.MemberResponse;
 import Project.ai_workspace_platform.dto.member.UpdateRoleRequest;
 import Project.ai_workspace_platform.entity.Project;
 import Project.ai_workspace_platform.entity.ProjectMember;
+import Project.ai_workspace_platform.entity.ProjectMemberId;
 import Project.ai_workspace_platform.entity.User;
+import Project.ai_workspace_platform.enums.ProjectRole;
 import Project.ai_workspace_platform.mapper.ProjectMemberMapper;
 import Project.ai_workspace_platform.service.ProjectMemberService;
-import Project.ai_workspace_platform.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +27,7 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
 
     private final ProjectMemberRepository projectMemberRepository;
     private final ProjectRepository projectRepository;
+    private final UserRepository userRepository;
     private final ProjectMemberMapper projectMemberMapper;
     @Override
     public List<MemberResponse> getProjectMembers(Long projectId, Long userId) {
@@ -45,8 +49,34 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
     }
 
     @Override
-    public MemberResponse addProjectMember(Long projectId, Long userId, MemberRequest memberRequest) {
-        return null;
+    public MemberResponse addProjectMember(Long projectId, Long userId, InviteMemberRequest memberRequest) {
+        Project project = projectRepository.findAccessibleProjectById(projectId,userId).orElseThrow();
+        if(project.getOwner().getId()!=userId){
+            throw new RuntimeException("You are not Authorized to Invite Members");
+        }
+
+        User invitee =userRepository.findByEmail(memberRequest.email()).orElseThrow();
+        if(invitee.getId().equals(userId)){
+            throw new RuntimeException("You are the OWNER of the Project");
+        }
+        // check for user already been invited
+        ProjectMemberId projectMemberId = new ProjectMemberId(projectId, invitee.getId());
+        if(projectMemberRepository.existsById(projectMemberId)){
+            throw new RuntimeException("Invitee is Already in Project");
+
+        }
+        ProjectMember member = ProjectMember.builder()
+                .id(projectMemberId)
+                .project(project)
+                .user(invitee)
+                .role(memberRequest.role())
+                .invitedAt(Instant.now())
+                .build();
+
+        projectMemberRepository.save(member);
+
+        return projectMemberMapper.toProjectMemberResponseFromMember(member);
+
     }
 
     @Override
