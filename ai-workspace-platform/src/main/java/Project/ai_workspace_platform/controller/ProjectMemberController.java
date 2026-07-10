@@ -31,7 +31,6 @@ public class ProjectMemberController {
 
     @PatchMapping("/{memberId}")
     public ResponseEntity<MemberResponse> updateRole(@PathVariable Long projectId, @PathVariable Long memberId,@RequestBody UpdateRoleRequest roleRequest){
-
         Long userId=1L;
         return ResponseEntity.ok(projectMemberService.UpdateRoleOfMember(projectId,memberId,roleRequest,userId));
     }

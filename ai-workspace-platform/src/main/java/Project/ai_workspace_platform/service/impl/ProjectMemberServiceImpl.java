@@ -81,7 +81,17 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
 
     @Override
     public MemberResponse UpdateRoleOfMember(Long projectId, Long userId, UpdateRoleRequest roleRequest, Long id) {
-        return null;
+        Project project = projectRepository.findAccessibleProjectById(projectId,userId).orElseThrow();
+        if(project.getOwner().getId()!=userId){
+            throw new RuntimeException("You are not Authorized to Invite Members");
+        }
+        ProjectMemberId projectMemberId = new ProjectMemberId(projectId,userId);
+        ProjectMember member = projectMemberRepository.findById(projectMemberId).orElseThrow();
+        member.setRole(roleRequest.role());
+        projectMemberRepository.save(member);
+
+        return projectMemberMapper.toProjectMemberResponseFromMember(member);
+
     }
 
     @Override
