@@ -10,7 +10,6 @@ import Project.ai_workspace_platform.entity.Project;
 import Project.ai_workspace_platform.entity.ProjectMember;
 import Project.ai_workspace_platform.entity.ProjectMemberId;
 import Project.ai_workspace_platform.entity.User;
-import Project.ai_workspace_platform.enums.ProjectRole;
 import Project.ai_workspace_platform.mapper.ProjectMemberMapper;
 import Project.ai_workspace_platform.service.ProjectMemberService;
 import lombok.RequiredArgsConstructor;
@@ -96,6 +95,13 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
 
     @Override
     public Void DeleteMemberFromProject(Long projectId, Long memberId, Long userId) {
+        Project project = projectRepository.findAccessibleProjectById(projectId,userId).orElseThrow();
+        if(project.getOwner().getId()!=userId){
+            throw new RuntimeException("You are not Authorized to Invite Members");
+        }
+        ProjectMemberId projectMemberId = new ProjectMemberId(projectId,memberId);
+        projectMemberRepository.deleteById(projectMemberId);
+
         return null;
     }
 }
