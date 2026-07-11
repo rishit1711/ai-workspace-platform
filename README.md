@@ -1,64 +1,49 @@
 # 🚀 AI Workspace Platform
 
-An AI-powered development platform that transforms natural language prompts into full-stack applications with live previews and collaborative project management.
+An AI-powered backend platform that enables users to build applications using natural language prompts. Instead of manually writing boilerplate code, users can describe what they want to build, and the platform generates the project structure, source code, and manages the entire development workflow.
+
+The platform provides APIs for project management, AI-powered code generation, chat history, file management, live preview orchestration, and collaboration. It is designed with scalability in mind and serves as a hands-on implementation of modern backend engineering concepts, including LLM integration, containerized execution, asynchronous processing, and production-ready system design.
 
 > ⚠️ **Status:** Under Active Development
 
-## ✨ Features (Planned)
+## ✨ Planned Features
 
-- 🤖 AI-powered code generation
-- 💬 Persistent chat sessions
-- 📁 Project & file management
-- 🌐 Live application preview
-- 👥 Team collaboration
-- 📦 Download projects as ZIP
-- 💳 Free & Pro subscription plans
-- ⚡ Rate limiting & quota management
+- 🔐 Authentication & Authorization
+- 📁 Project Management
+- 🤖 AI Code Generation
+- 💬 Chat Sessions & Conversation History
+- 📂 File Management
+- 🌐 Live Preview Management
+- 👥 Multi-user Project Collaboration
+- 💳 Subscription & Quota Management
+- ⚡ Rate Limiting
 
 ## 🛠️ Tech Stack
 
-**Backend**
 - Java 21
 - Spring Boot
 - Spring Security
+- Spring Data JPA
 - PostgreSQL
-- JPA/Hibernate
-
-**Frontend**
-- React
-- TypeScript
-- Tailwind CSS
-
-**Infrastructure**
 - Docker
 - Redis *(planned)*
 - Kafka *(planned)*
-- Kubernetes *(planned)*
-
-**AI**
 - OpenAI / Claude APIs
-- Streaming Responses
 - RAG *(planned)*
 
-## 🎯 Goals
+## 🎯 Goal
 
-- Build a production-style AI development platform
-- Explore LLM integration with Spring Boot
-- Learn scalable backend architecture
-- Practice containerized application execution
+Build a production-grade backend that explores AI-assisted software development while implementing scalable architecture, LLM integration, event-driven communication, and containerized application execution.
 
 ## 🚧 Roadmap
 
-- [ ] Authentication & Authorization
+- [ ] Authentication
 - [ ] Project Management
-- [ ] AI Chat & Code Generation
+- [ ] AI Integration
+- [ ] Chat Sessions
 - [ ] File Management
-- [ ] Live Preview
-- [ ] Docker Integration
-- [ ] RAG
+- [ ] Preview Service
+- [ ] Docker Execution
+- [ ] Redis
 - [ ] Kafka
-- [ ] Kubernetes
-
----
-
-⭐ This project is being built to explore modern backend engineering, AI integration, and scalable system design.
+- [ ] RAG
