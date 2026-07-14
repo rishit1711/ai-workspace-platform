@@ -7,6 +7,7 @@ import Project.ai_workspace_platform.dto.Project.ProjectResponse;
 import Project.ai_workspace_platform.dto.Project.ProjectSummaryResponse;
 import Project.ai_workspace_platform.entity.Project;
 import Project.ai_workspace_platform.entity.User;
+import Project.ai_workspace_platform.exception.ResourceNotFoundException;
 import Project.ai_workspace_platform.mapper.ProjectMapper;
 import Project.ai_workspace_platform.service.ProjectService;
 import jakarta.transaction.Transactional;
@@ -35,7 +36,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectResponse getProjectById(Long id, Long userId) {
-        Project project = projectRepository.findAccessibleProjectById(id,userId).orElseThrow(()->  new RuntimeException("Project Not found"));
+        Project project = projectRepository.findAccessibleProjectById(id,userId).orElseThrow(()->  new ResourceNotFoundException("Project Not Found with Id: "+id));
         return projectMapper.toProjectResponse(project);
 
     }
