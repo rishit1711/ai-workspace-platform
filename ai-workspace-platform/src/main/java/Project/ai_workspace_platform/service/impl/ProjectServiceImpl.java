@@ -1,12 +1,15 @@
 package Project.ai_workspace_platform.service.impl;
 
+import Project.ai_workspace_platform.Repository.ProjectMemberRepository;
 import Project.ai_workspace_platform.Repository.ProjectRepository;
 import Project.ai_workspace_platform.Repository.UserRepository;
 import Project.ai_workspace_platform.dto.Project.ProjectRequest;
 import Project.ai_workspace_platform.dto.Project.ProjectResponse;
 import Project.ai_workspace_platform.dto.Project.ProjectSummaryResponse;
 import Project.ai_workspace_platform.entity.Project;
+import Project.ai_workspace_platform.entity.ProjectMember;
 import Project.ai_workspace_platform.entity.User;
+import Project.ai_workspace_platform.enums.ProjectRole;
 import Project.ai_workspace_platform.exception.ResourceNotFoundException;
 import Project.ai_workspace_platform.mapper.ProjectMapper;
 import Project.ai_workspace_platform.service.ProjectService;
@@ -26,6 +29,7 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
     private final UserRepository userRepository;
     private final ProjectMapper projectMapper;
+    private final ProjectMemberRepository projectMemberRepository;
 
     @Override
     public List<ProjectSummaryResponse> getMyProjects(Long userId) {
@@ -52,6 +56,13 @@ public class ProjectServiceImpl implements ProjectService {
                  .build();
 
          projectRepository.save(project);
+        ProjectMember ownerMember = ProjectMember.builder()
+                .project(project)
+                .user(owner)
+                .role(ProjectRole.OWNER)
+                .build();
+
+        projectMemberRepository.save(ownerMember);
          return projectMapper.toProjectResponse(project);
 
     }
