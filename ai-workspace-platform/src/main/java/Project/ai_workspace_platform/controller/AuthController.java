@@ -1,6 +1,6 @@
 package Project.ai_workspace_platform.controller;
 
-import Project.ai_workspace_platform.dto.Auth.AuthResponseDto;
+import Project.ai_workspace_platform.dto.Auth.AuthResponse;
 import Project.ai_workspace_platform.dto.Auth.LoginRequestDto;
 import Project.ai_workspace_platform.dto.Auth.SignUpRequest;
 import Project.ai_workspace_platform.dto.Auth.UserProfileResponse;
@@ -20,12 +20,12 @@ public class AuthController {
 
 
     @PostMapping("/signup")
-    public ResponseEntity<AuthResponseDto> signup(@RequestBody SignUpRequest signUpRequest){
+    public ResponseEntity<AuthResponse> signup(@RequestBody SignUpRequest signUpRequest){
         return ResponseEntity.ok(authService.signup(signUpRequest));
 
     }
     @PostMapping("/login")
-    public ResponseEntity<AuthResponseDto>  login(@RequestBody LoginRequestDto loginRequest){
+    public ResponseEntity<AuthResponse>  login(@RequestBody LoginRequestDto loginRequest){
         return ResponseEntity.ok(authService.login(loginRequest));
 
     }

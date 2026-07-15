@@ -51,7 +51,7 @@ public class ProjectServiceImpl implements ProjectService {
         User owner = userRepository.findById(userId).orElseThrow(()->new RuntimeException("User Not Found"));
          Project project = Project.builder()
                          .name(projectRequest.name())
-                                 .owner(owner)
+
                  .isPublic(false)
                  .build();
 
