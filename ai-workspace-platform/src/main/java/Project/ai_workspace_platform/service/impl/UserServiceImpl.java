@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserProfileResponse getProfile(Long id) {
         return null;
     }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow(null);
+    }
 }

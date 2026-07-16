@@ -46,5 +46,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(error);
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handle(Exception ex) {
+        ex.printStackTrace();
+        return ResponseEntity.internalServerError().body(ex.getMessage());
+    }
+
 
 }

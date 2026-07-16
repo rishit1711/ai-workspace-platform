@@ -28,10 +28,11 @@ public class User implements UserDetails {
     private String name;
 
     private String avatarUrl;
-
+    @CreationTimestamp
     private Instant createdAt;
-
+    @UpdateTimestamp
     private Instant updatedAt;
+
     private Instant deletedAt;
 
 

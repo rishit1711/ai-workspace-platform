@@ -46,26 +46,33 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-
     public ProjectResponse createProject(ProjectRequest projectRequest, Long userId) {
-        User owner = userRepository.findById(userId).orElseThrow(()->new RuntimeException("User Not Found"));
-         Project project = Project.builder()
-                         .name(projectRequest.name())
 
-                 .isPublic(false)
-                 .build();
+        User owner = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User Not Found"));
 
-         projectRepository.save(project);
+        Project project = Project.builder()
+                .name(projectRequest.name())
+                .owner(owner)
+                .isPublic(false)
+                .build();
+
+        projectRepository.save(project);
+
         ProjectMember ownerMember = ProjectMember.builder()
                 .project(project)
                 .user(owner)
                 .role(ProjectRole.OWNER)
+                .acceptedAt(Instant.now())
                 .build();
 
         projectMemberRepository.save(ownerMember);
-         return projectMapper.toProjectResponse(project);
 
+        return projectMapper.toProjectResponse(project);
     }
+
+
+
 
     @Override
     public ProjectResponse updateProject(Long id, ProjectRequest projectRequest, Long userId) {
