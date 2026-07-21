@@ -15,6 +15,7 @@ import Project.ai_workspace_platform.mapper.ProjectMapper;
 import Project.ai_workspace_platform.service.ProjectService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -39,6 +40,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    @PreAuthorize("@security.canViewProject(#id)")
     public ProjectResponse getProjectById(Long id, Long userId) {
         Project project = projectRepository.findAccessibleProjectById(id,userId).orElseThrow(()->  new ResourceNotFoundException("Project Not Found with Id: "+id));
         return projectMapper.toProjectResponse(project);
@@ -75,6 +77,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 
     @Override
+    @PreAuthorize("@security.canEditProject(#id)")
     public ProjectResponse updateProject(Long id, ProjectRequest projectRequest, Long userId) {
         Project project = projectRepository.findAccessibleProjectById(id,userId).orElseThrow();
         if(!project.getOwner().getId().equals(userId)){
