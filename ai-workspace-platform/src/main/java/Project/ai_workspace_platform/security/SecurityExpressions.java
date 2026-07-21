@@ -18,7 +18,11 @@ public class SecurityExpressions {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = user.getId();
 
-        ProjectRole projectRole = projectMemberRepository.findRoleByProjectIdAndUserId(id,userId).orElseThrow(()->new ResourceNotFoundException("Something went wrong"));
+        return projectMemberRepository.findRoleByProjectIdAndUserId(id,userId)
+                .map(projectRole -> projectRole.equals(ProjectRole.EDITOR) || projectRole.equals(ProjectRole.VIEWER) || projectRole.equals(ProjectRole.OWNER))
+                .orElse(false);
+
+
 
 
 
