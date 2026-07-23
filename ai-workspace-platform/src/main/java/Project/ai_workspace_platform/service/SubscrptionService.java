@@ -8,5 +8,5 @@ import Project.ai_workspace_platform.dto.Subscription.SubscriptionResponse;
 public interface SubscrptionService {
     SubscriptionResponse getMySubscription(Long userId);
 
-     CheckoutResponse createCheckoutResponse(Long userId, CheckoutRequest checkoutRequest);
+     CheckoutResponse createCheckoutResponse( CheckoutRequest checkoutRequest);
 }

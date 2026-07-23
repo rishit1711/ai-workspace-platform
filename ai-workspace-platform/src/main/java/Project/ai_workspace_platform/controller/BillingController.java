@@ -27,7 +27,7 @@ public class BillingController {
     }
     @GetMapping("api/me/subscription")
     public ResponseEntity<SubscriptionResponse> mySubscription(){
-        Long userId=1L;
+
         return ResponseEntity.ok(subscrptionService.getMySubscription(userId));
     }
 
@@ -36,7 +36,7 @@ public class BillingController {
             @RequestBody CheckoutRequest checkoutRequest
     ){
 
-       Long UserId =1L;
+
        return ResponseEntity.ok(subscrptionService.createCheckoutResponse(UserId,checkoutRequest));
 
 
