@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class SubscriptionController {
+public class BillingController {
     private final PlanService planService;
     private final SubscrptionService subscrptionService;
 
