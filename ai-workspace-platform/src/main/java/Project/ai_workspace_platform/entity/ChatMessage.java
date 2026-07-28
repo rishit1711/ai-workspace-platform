@@ -1,5 +1,6 @@
 package Project.ai_workspace_platform.entity;
 
+import Project.ai_workspace_platform.enums.MessageRole;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -20,7 +21,9 @@ public class ChatMessage {
     ChatSession chatSession;
     @Column(nullable = false)
     String content;
-    String toolcals;
+    @Enumerated(EnumType.STRING)
+     @Column(nullable = false)
+    MessageRole role;
     Integer tokenUsed;
     @CreationTimestamp
     Instant CreatedAt;
