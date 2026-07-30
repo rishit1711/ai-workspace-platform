@@ -9,4 +9,6 @@ public interface AuthService {
       AuthResponse signup(SignUpRequest signUpRequest);
 
      AuthResponse login(LoginRequestDto loginRequest);
+
+     Long getCurrentUserId();
 }
