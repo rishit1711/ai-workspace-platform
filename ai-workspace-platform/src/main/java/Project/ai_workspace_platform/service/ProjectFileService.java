@@ -6,8 +6,8 @@ import Project.ai_workspace_platform.dto.Files.FileNode;
 
 import java.util.List;
 
-public interface FileService {
-     List<FileNode> getFileTree(Long userId, Long projectId);
+public interface ProjectFileService {
+    List<FileNode> getFileTree(Long userId, Long projectId);
 
     FileContentResponse getMetaData(Long projectId, String path, Long userId);
 }

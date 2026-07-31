@@ -3,6 +3,7 @@ package Project.ai_workspace_platform.service.impl;
 import Project.ai_workspace_platform.security.SecurityExpressions;
 import Project.ai_workspace_platform.service.AIGenerationService;
 import Project.ai_workspace_platform.service.AuthService;
+import Project.ai_workspace_platform.service.ProjectFileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -22,6 +23,7 @@ public class AIGenerationServiceImpl implements AIGenerationService {
     private final ChatClient chatClient;
     private final SecurityExpressions expressions;
     private final AuthService authService;
+    private final ProjectFileService projectFileService;
 
      private static final Pattern FILE_PATTERN = Pattern.compile(
             "<file\\s+path=\"([^\"]+)\">(.*?)</file>",

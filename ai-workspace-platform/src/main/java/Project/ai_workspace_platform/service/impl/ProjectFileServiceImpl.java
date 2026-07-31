@@ -2,14 +2,15 @@ package Project.ai_workspace_platform.service.impl;
 
 import Project.ai_workspace_platform.dto.Files.FileContentResponse;
 import Project.ai_workspace_platform.dto.Files.FileNode;
-import Project.ai_workspace_platform.service.FileService;
+import Project.ai_workspace_platform.service.ProjectFileService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class FileServiceImpl implements FileService {
+public class ProjectFileServiceImpl implements ProjectFileService {
     @Override
     public List<FileNode> getFileTree(Long userId, Long projectId) {
+
         return List.of();
     }
 

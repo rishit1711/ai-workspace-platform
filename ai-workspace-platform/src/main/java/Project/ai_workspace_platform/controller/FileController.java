@@ -2,7 +2,7 @@ package Project.ai_workspace_platform.controller;
 
 import Project.ai_workspace_platform.dto.Files.FileContentResponse;
 import Project.ai_workspace_platform.dto.Files.FileNode;
-import Project.ai_workspace_platform.service.FileService;
+import Project.ai_workspace_platform.service.ProjectFileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FileController {
 
-    private final FileService fileService;
+    private final ProjectFileService fileService;
 
     @GetMapping
     public ResponseEntity<List<FileNode>> getFileTree(@PathVariable Long projectId){
