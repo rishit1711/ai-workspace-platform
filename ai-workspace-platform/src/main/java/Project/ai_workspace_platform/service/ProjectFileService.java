@@ -10,4 +10,6 @@ public interface ProjectFileService {
     List<FileNode> getFileTree(Long userId, Long projectId);
 
     FileContentResponse getMetaData(Long projectId, String path, Long userId);
+
+    void saveFile(Long projectId, String filePath, String fileContent);
 }

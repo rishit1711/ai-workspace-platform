@@ -70,6 +70,7 @@ public class AIGenerationServiceImpl implements AIGenerationService {
         while (matcher.find()){
             String filePath=matcher.group(1);
             String fileContent = matcher.group(2).trim();
+            projectFileService.saveFile(projectId,filePath,fileContent);
         }
     }
 
