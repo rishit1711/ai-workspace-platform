@@ -1,0 +1,90 @@
+[33m2471260[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Remove secrets
+[33m95adb5f[m working on file storage
+[33m55ccde5[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m working on file storage
+[33m9e637c9[m working on file storage
+[33m44fd9fe[m working on file storage
+[33m09dba89[m Set up Extensive System Prompt
+[33m6f46090[m Set up Extensive System Prompt
+[33mb3179f8[m Working on saving LLM response in MINIO
+[33mbaff6b4[m AIGenerationServiceImpl
+[33m258eefc[m AIGenerationServiceImpl
+[33m8ca9a24[m AIGenerationServiceImpl
+[33m8af2300[m AIGenerationServiceImpl
+[33m9bf3b6a[m ddds
+[33m11383b5[m Gemini Configuration
+[33m9248a8a[m AI Module Started
+[33m0fd9bda[m AI Module Started
+[33m5993d9b[m AI Module Started
+[33m171fa90[m AI Module Started
+[33m6e7fab0[m Setting up Payment Gateway
+[33m2148dc2[m Setting up Payment Gateway
+[33m9fda1fc[m Authorization Impl
+[33m32d2197[m Authorization Impl
+[33m2fd1558[m Authorization Impl
+[33mf11f6a0[m Authorization Impl
+[33mcacc4fb[m Authorization Impl
+[33m47b005d[m Authentication Impl
+[33mf8bf05f[m Authentication Impl
+[33m887dae1[m Authentication Impl
+[33mf34aeaf[m Authentication Impl
+[33ma779fb0[m Authentication Impl
+[33m7abbce5[m Setup Auth Related Modules
+[33me7fafb9[m Setup Auth Related Modules
+[33m0e0b99c[m Service polishing
+[33m80f55c5[m Indexing
+[33m8fa1e89[m Exceptions Handling
+[33maadcc11[m Exceptions Handling
+[33m03e9b89[m Merge remote-tracking branch 'origin/main'
+[33m972b937[m Validations Setup
+[33ma6f27a2[m Revise README for clarity and feature updates
+[33mcdd058a[m Update README.md
+[33m62f112c[m Service Implementation
+[33m0b98542[m Service Implementation
+[33me4a22cd[m Service Implementation
+[33m2eed035[m Service Implementation
+[33m193cbc2[m Service Implementation
+[33m675ca9e[m Service Implementation
+[33mccd11fd[m Service Implementation
+[33m48e5f33[m Service Implementation
+[33ma733b92[m Service Implementation
+[33m299feeb[m Service Implementation
+[33ma0333d8[m Service Implementation
+[33m255c750[m Service Implementation
+[33m73337e7[m Service Implementation
+[33m71f8734[m Service Implementation
+[33m113d165[m Service Implementation
+[33mf3073ed[m Service Implementation
+[33m546c62a[m Service Implementation
+[33mcb223a5[m Service Implementation
+[33m6fa905a[m Service Implementation
+[33m55bfebd[m Service Implementation
+[33meeb4cb2[m Service Implementation
+[33m7b32707[m Service Implementation
+[33mbe93675[m Additional Api's Done.
+[33ma91cf55[m Additional Api's Done.
+[33m8679ff4[m Additional Api's Created.
+[33mb4116f7[m Additional Api's Created.
+[33md743107[m Additional Api's Created.
+[33m7cde974[m File Related Api's Completed.
+[33m25c3723[m Started with REST API Development.
+[33m9fdb035[m Started with REST API Development.
+[33m4a27d2e[m Started with REST API Development.
+[33m746e826[m Started with REST API Development.
+[33me05e5d3[m Started with REST API Development.
+[33mae75303[m Started with REST API Development.
+[33m70ba195[m Started with REST API Development.
+[33m56e271a[m Started with REST API Development.
+[33me614388[m Started with REST API Development.
+[33m1fa2930[m Started with Entity Development..
+[33mbd83993[m Started with Entity Development..
+[33m38762e3[m Started with Entity Development..
+[33m619ee28[m Started with Entity Development..
+[33md762c27[m Started with Entity Development..
+[33mf71f3cb[m Started with Entity Development..
+[33m20394a5[m Started with Entity Development..
+[33mbf7f329[m Started with Entity Development..
+[33m0ef9a53[m Started with Entity Development..
+[33m4a7547d[m Remove IntelliJ files
+[33m768dc93[m Merge branch 'main' of https://github.com/rishit1711/ai-workspace-platform
+[33m8fd8fdc[m Initial commit
+[33mae06e2c[m Initial commit
