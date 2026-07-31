@@ -31,7 +31,7 @@ public class AIGenerationServiceImpl implements AIGenerationService {
             Pattern.DOTALL
     );
     @Override
-    @PreAuthorize("@security.canViewProject(#projectId)")
+    //@PreAuthorize("@security.canViewProject(#projectId)")
     public Flux<String> streamResponse(String message, Long projectId) {
 
         Long userId = authService.getCurrentUserId();

@@ -34,3 +34,6 @@ build/
 .idea/
 *.iml
 target/
+
+# Secrets
+src/main/resources/app.properties
