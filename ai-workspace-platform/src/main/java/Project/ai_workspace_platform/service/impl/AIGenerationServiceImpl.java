@@ -1,5 +1,6 @@
 package Project.ai_workspace_platform.service.impl;
 
+import Project.ai_workspace_platform.llm.SystemPrompt;
 import Project.ai_workspace_platform.security.SecurityExpressions;
 import Project.ai_workspace_platform.service.AIGenerationService;
 import Project.ai_workspace_platform.service.AuthService;
@@ -44,7 +45,7 @@ public class AIGenerationServiceImpl implements AIGenerationService {
         StringBuilder buffer = new StringBuilder();
 
         return chatClient.prompt()
-                .system("")
+                .system(SystemPrompt.CODE_GENERATION_SYSTEM_PROMPT)
                 .user(message)
                 .advisors(advisorSpec -> advisorSpec.params(advisorParams))
                 .stream()
