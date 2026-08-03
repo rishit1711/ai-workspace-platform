@@ -1,9 +1,8 @@
 package Project.ai_workspace_platform.service.impl;
 
-import Project.ai_workspace_platform.Repository.UserRepository;
+import Project.ai_workspace_platform.repository.UserRepository;
 import Project.ai_workspace_platform.dto.Auth.UserProfileResponse;
 import Project.ai_workspace_platform.entity.User;
-import Project.ai_workspace_platform.exception.ResourceNotFoundException;
 import Project.ai_workspace_platform.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

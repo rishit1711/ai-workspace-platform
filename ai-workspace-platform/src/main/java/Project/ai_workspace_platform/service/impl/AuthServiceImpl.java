@@ -1,6 +1,6 @@
 package Project.ai_workspace_platform.service.impl;
 
-import Project.ai_workspace_platform.Repository.UserRepository;
+import Project.ai_workspace_platform.repository.UserRepository;
 import Project.ai_workspace_platform.dto.Auth.AuthResponse;
 import Project.ai_workspace_platform.dto.Auth.LoginRequestDto;
 import Project.ai_workspace_platform.dto.Auth.SignUpRequest;
@@ -53,6 +53,12 @@ public class AuthServiceImpl implements AuthService {
     public Long getCurrentUserId() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return user.getId();
+    }
+
+    @Override
+    public User getCurrentUser() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return user;
     }
 
 }

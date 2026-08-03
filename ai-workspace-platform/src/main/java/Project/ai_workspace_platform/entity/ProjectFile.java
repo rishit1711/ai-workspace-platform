@@ -1,11 +1,17 @@
 package Project.ai_workspace_platform.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 @Entity
+@Getter
+@Setter
+@Builder
 public class ProjectFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

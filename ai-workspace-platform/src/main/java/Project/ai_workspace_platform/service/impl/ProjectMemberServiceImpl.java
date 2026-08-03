@@ -1,8 +1,8 @@
 package Project.ai_workspace_platform.service.impl;
 
-import Project.ai_workspace_platform.Repository.ProjectMemberRepository;
-import Project.ai_workspace_platform.Repository.ProjectRepository;
-import Project.ai_workspace_platform.Repository.UserRepository;
+import Project.ai_workspace_platform.repository.ProjectMemberRepository;
+import Project.ai_workspace_platform.repository.ProjectRepository;
+import Project.ai_workspace_platform.repository.UserRepository;
 import Project.ai_workspace_platform.dto.member.InviteMemberRequest;
 import Project.ai_workspace_platform.dto.member.MemberResponse;
 import Project.ai_workspace_platform.dto.member.UpdateRoleRequest;
@@ -16,9 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

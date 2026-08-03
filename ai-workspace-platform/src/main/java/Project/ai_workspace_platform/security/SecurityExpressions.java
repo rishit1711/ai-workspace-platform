@@ -1,6 +1,6 @@
 package Project.ai_workspace_platform.security;
 
-import Project.ai_workspace_platform.Repository.ProjectMemberRepository;
+import Project.ai_workspace_platform.repository.ProjectMemberRepository;
 import Project.ai_workspace_platform.entity.User;
 import Project.ai_workspace_platform.enums.ProjectRole;
 import lombok.RequiredArgsConstructor;

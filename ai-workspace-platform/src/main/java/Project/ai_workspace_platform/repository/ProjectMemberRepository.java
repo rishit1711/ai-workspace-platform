@@ -1,4 +1,4 @@
-package Project.ai_workspace_platform.Repository;
+package Project.ai_workspace_platform.repository;
 
 import Project.ai_workspace_platform.entity.ProjectMember;
 import Project.ai_workspace_platform.entity.ProjectMemberId;

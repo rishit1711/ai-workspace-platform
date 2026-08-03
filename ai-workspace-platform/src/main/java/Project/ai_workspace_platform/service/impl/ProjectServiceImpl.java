@@ -1,8 +1,8 @@
 package Project.ai_workspace_platform.service.impl;
 
-import Project.ai_workspace_platform.Repository.ProjectMemberRepository;
-import Project.ai_workspace_platform.Repository.ProjectRepository;
-import Project.ai_workspace_platform.Repository.UserRepository;
+import Project.ai_workspace_platform.repository.ProjectMemberRepository;
+import Project.ai_workspace_platform.repository.ProjectRepository;
+import Project.ai_workspace_platform.repository.UserRepository;
 import Project.ai_workspace_platform.dto.Project.ProjectRequest;
 import Project.ai_workspace_platform.dto.Project.ProjectResponse;
 import Project.ai_workspace_platform.dto.Project.ProjectSummaryResponse;
