@@ -2,6 +2,7 @@ package Project.ai_workspace_platform.service.impl;
 
 import Project.ai_workspace_platform.entity.ProjectFile;
 import Project.ai_workspace_platform.entity.User;
+import Project.ai_workspace_platform.mapper.ProjectFileMapper;
 import Project.ai_workspace_platform.repository.ProjectFileRepository;
 import Project.ai_workspace_platform.repository.ProjectRepository;
 import Project.ai_workspace_platform.dto.Files.FileContentResponse;
@@ -34,13 +35,15 @@ public class ProjectFileServiceImpl implements ProjectFileService {
     private final ProjectFileRepository projectFileRepository;
     private final MinioClient minioClient;
     private final AuthService authService;
+    private final ProjectFileMapper projectFileMapper;
     @Value("${minio.bucket-name}")
     private String bucketName;
 
     @Override
     public List<FileNode> getFileTree(Long userId, Long projectId) {
+        List<ProjectFile> projectFileList = projectFileRepository.findByProjectId(projectId);
 
-        return List.of();
+        return projectFileMapper.toListOfFileNode(projectFileList);
     }
 
     @Override
