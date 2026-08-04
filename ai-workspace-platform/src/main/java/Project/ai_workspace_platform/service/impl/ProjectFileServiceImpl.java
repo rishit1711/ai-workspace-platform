@@ -83,7 +83,7 @@ public class ProjectFileServiceImpl implements ProjectFileService {
 
         ProjectFile projectFile = (ProjectFile) projectFileRepository
                 .findByProjectIdAndPath(projectId, filePath)
-                .orElseThrow(() -> new ResourceNotFoundException("File not found"));
+                .orElse(new ProjectFile());
 
         projectFile.setProject(project);
         projectFile.setPath(filePath);
