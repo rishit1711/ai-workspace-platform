@@ -8,10 +8,10 @@ import java.util.Optional;
 
 public interface ProjectFileRepository extends JpaRepository<ProjectFile,Long> {
 
-    Optional<ProjectFile> findByProjectIdAndFilePath(Long projectId,
-                                                     String filePath);
+    Optional<ProjectFile> findByProjectIdAndPath(Long projectId,
+                                                 String filePath);
 
-    Optional<Object> findByProjectIdAndPath(Long projectId, String filePath);
+
 
     List<ProjectFile> findByProjectId(Long projectId);
 }
