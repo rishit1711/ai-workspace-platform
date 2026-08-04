@@ -8,6 +8,7 @@ import Project.ai_workspace_platform.service.ProjectFileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
@@ -25,12 +26,13 @@ public class AIGenerationServiceImpl implements AIGenerationService {
     private final AuthService authService;
     private final ProjectFileService projectFileService;
 
-     private static final Pattern FILE_PATTERN = Pattern.compile(
-            "<file\\s+path=\"([^\"]+)\">(.*?)</file>",
+    private static final Pattern FILE_PATTERN = Pattern.compile(
+            "<file>\\s*<path>(.*?)</path>\\s*<content><!\\[CDATA\\[(.*?)]]></content>\\s*</file>",
             Pattern.DOTALL
     );
-    @Override
+
     //@PreAuthorize("@security.canViewProject(#projectId)")
+    @Override
     public Flux<String> streamResponse(String message, Long projectId) {
 
         Long userId = authService.getCurrentUserId();
@@ -41,36 +43,31 @@ public class AIGenerationServiceImpl implements AIGenerationService {
         );
 
         createChatSessionIfNotExists(projectId, userId);
-        StringBuilder buffer = new StringBuilder();
 
-        return chatClient.prompt()
+        ChatResponse response = chatClient.prompt()
                 .system(SystemPrompt.CODE_GENERATION_SYSTEM_PROMPT)
                 .user(message)
                 .advisors(advisorSpec -> advisorSpec.params(advisorParams))
-                .stream()
-                .chatResponse()
-                .doOnNext(chatResponse -> {
-                    String content=chatResponse.getResult().getOutput().getText();
-                    buffer.append(content);
-                })
-                .doOnComplete(()->{
-                    Schedulers.boundedElastic().schedule(()->{
-                        parseAndSaveFiles(buffer.toString(),projectId);
-                    });
+                .call()
+                .chatResponse();
 
-                })
-                .doOnError(error -> {
-                    log.error("Error during streaming for ProjectId: {}", projectId, error);
-                })
-                .map(chatResponse -> chatResponse.getResult().getOutput().getText());
+        String content = response.getResult().getOutput().getText();
+
+        parseAndSaveFiles(content, projectId);
+
+        return Flux.just(content);
     }
-
     private void parseAndSaveFiles(String fullResponse, Long projectId) {
-        Matcher matcher=FILE_PATTERN.matcher(fullResponse);
-        while (matcher.find()){
-            String filePath=matcher.group(1);
-            String fileContent = matcher.group(2).trim();
-            projectFileService.saveFile(projectId,filePath,fileContent);
+        log.info("Full response:\n{}", fullResponse);
+        Matcher matcher = FILE_PATTERN.matcher(fullResponse);
+
+        while (matcher.find()) {
+            String filePath = matcher.group(1).trim();
+            String fileContent = matcher.group(2);
+
+            log.info("Saving {}", filePath);
+
+            projectFileService.saveFile(projectId, filePath, fileContent);
         }
     }
 
