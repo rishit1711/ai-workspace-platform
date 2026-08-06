@@ -2,6 +2,7 @@ package Project.ai_workspace_platform.service.impl;
 
 import Project.ai_workspace_platform.config.advisors.FileTreeContextAdvisor;
 import Project.ai_workspace_platform.llm.SystemPrompt;
+import Project.ai_workspace_platform.llm.tool.CodeGenerationTool;
 import Project.ai_workspace_platform.security.SecurityExpressions;
 import Project.ai_workspace_platform.service.AIGenerationService;
 import Project.ai_workspace_platform.service.AuthService;
@@ -26,6 +27,7 @@ public class AIGenerationServiceImpl implements AIGenerationService {
     private final AuthService authService;
     private final ProjectFileService projectFileService;
     private final FileTreeContextAdvisor fileTreeContextAdvisor;
+    private final CodeGenerationTool codeGenerationTool;
 
     private static final Pattern FILE_PATTERN = Pattern.compile(
             "<file>\\s*<path>(.*?)</path>\\s*<content><!\\[CDATA\\[(.*?)]]></content>\\s*</file>",
@@ -52,6 +54,7 @@ public class AIGenerationServiceImpl implements AIGenerationService {
                             advisorSpec.advisors(fileTreeContextAdvisor);
                             advisorSpec.params(advisorParams);
                         })
+                .tools(codeGenerationTool)
 
                 .call()
                 .chatResponse();
