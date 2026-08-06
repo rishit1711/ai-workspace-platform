@@ -1,5 +1,6 @@
 package Project.ai_workspace_platform.service.impl;
 
+import Project.ai_workspace_platform.config.advisors.FileTreeContextAdvisor;
 import Project.ai_workspace_platform.llm.SystemPrompt;
 import Project.ai_workspace_platform.security.SecurityExpressions;
 import Project.ai_workspace_platform.service.AIGenerationService;
@@ -11,7 +12,6 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
-import reactor.core.scheduler.Schedulers;
 
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -25,6 +25,7 @@ public class AIGenerationServiceImpl implements AIGenerationService {
     private final SecurityExpressions expressions;
     private final AuthService authService;
     private final ProjectFileService projectFileService;
+    private final FileTreeContextAdvisor fileTreeContextAdvisor;
 
     private static final Pattern FILE_PATTERN = Pattern.compile(
             "<file>\\s*<path>(.*?)</path>\\s*<content><!\\[CDATA\\[(.*?)]]></content>\\s*</file>",
@@ -47,7 +48,11 @@ public class AIGenerationServiceImpl implements AIGenerationService {
         ChatResponse response = chatClient.prompt()
                 .system(SystemPrompt.CODE_GENERATION_SYSTEM_PROMPT)
                 .user(message)
-                .advisors(advisorSpec -> advisorSpec.params(advisorParams))
+                        .advisors(advisorSpec -> {
+                            advisorSpec.advisors(fileTreeContextAdvisor);
+                            advisorSpec.params(advisorParams);
+                        })
+
                 .call()
                 .chatResponse();
 

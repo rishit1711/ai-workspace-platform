@@ -40,7 +40,7 @@ public class ProjectFileServiceImpl implements ProjectFileService {
     private String bucketName;
 
     @Override
-    public List<FileNode> getFileTree(Long userId, Long projectId) {
+    public List<FileNode> getFileTree( Long projectId) {
         List<ProjectFile> projectFileList = projectFileRepository.findByProjectId(projectId);
 
         return projectFileMapper.toListOfFileNode(projectFileList);
