@@ -17,11 +17,34 @@ public class CodeGenerationTool {
 
 
 
-    @Tool(name = "read_files",
-            description = "Read the content of the files in the file Tree.Do not input any path which is not present in file Tree")
+    @Tool(
+            name = "read_files",
+            description = """
+Returns the latest contents of one or more existing project files.
+
+IMPORTANT:
+- You DO NOT know the contents of any existing project file.
+- Before modifying ANY existing file, you MUST call this tool.
+- Never guess or reconstruct file contents from memory.
+- The returned contents are the only source of truth.
+- Call this tool only for files that exist in the provided project tree.
+"""
+    )
     public List<FileContentResponse> getFileContent(
             Long projectId,
-            @ToolParam(description = "List of relative paths . (e.g['src/App.jsx'])")
+            @ToolParam(
+                    description = """
+List of existing project file paths to read.
+
+Example:
+[
+  "src/App.tsx",
+  "src/components/Navbar.tsx"
+]
+
+Only include files that already exist in the project tree.
+"""
+            )
             List<String> paths
     ) {
         log.info("I want a Tool call");
