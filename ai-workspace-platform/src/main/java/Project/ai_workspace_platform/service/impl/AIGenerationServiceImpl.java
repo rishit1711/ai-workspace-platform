@@ -1,8 +1,8 @@
 package Project.ai_workspace_platform.service.impl;
 
 import Project.ai_workspace_platform.config.advisors.FileTreeContextAdvisor;
-import Project.ai_workspace_platform.llm.SystemPrompt;
-import Project.ai_workspace_platform.llm.tool.CodeGenerationTool;
+import Project.ai_workspace_platform.prompt.SystemPrompt;
+import Project.ai_workspace_platform.prompt.tool.CodeGenerationTool;
 import Project.ai_workspace_platform.security.SecurityExpressions;
 import Project.ai_workspace_platform.service.AIGenerationService;
 import Project.ai_workspace_platform.service.AuthService;

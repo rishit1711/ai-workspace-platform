@@ -1,10 +1,8 @@
 package Project.ai_workspace_platform.config.advisors;
 
 import Project.ai_workspace_platform.dto.Files.FileNode;
-import Project.ai_workspace_platform.entity.ProjectFile;
 import Project.ai_workspace_platform.service.ProjectFileService;
 import lombok.RequiredArgsConstructor;
-import okhttp3.Call;
 import org.springframework.ai.chat.client.ChatClientRequest;
 import org.springframework.ai.chat.client.ChatClientResponse;
 import org.springframework.ai.chat.client.advisor.api.CallAdvisor;

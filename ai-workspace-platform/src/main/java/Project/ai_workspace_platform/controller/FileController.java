@@ -24,7 +24,7 @@ public class FileController {
     @GetMapping("/{*path}")
     public ResponseEntity<FileContentResponse> getFileData(@PathVariable Long projectId, @RequestBody String path){
         Long userId=1L;
-        return ResponseEntity.ok(fileService.getMetaData(projectId,path,userId));
+        return ResponseEntity.ok(fileService.getFileContent(projectId,path));
     }
 
 

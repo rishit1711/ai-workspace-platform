@@ -1,4 +1,4 @@
-package Project.ai_workspace_platform.llm;
+package Project.ai_workspace_platform.prompt;
 
 public class SystemPrompt {
     public final static String CODE_GENERATION_SYSTEM_PROMPT= """
