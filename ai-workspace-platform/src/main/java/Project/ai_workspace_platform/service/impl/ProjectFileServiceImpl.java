@@ -124,7 +124,7 @@ public class ProjectFileServiceImpl implements ProjectFileService {
 
         log.info("File saved successfully : {}", filePath);
     }
-    private String buildObjectKey(Long projectId, String filePath) {
-        return "projects/" + projectId + "/" + filePath;
-    }
+//    private String buildObjectKey(Long projectId, String filePath) {
+//        return "projects/" + projectId + "/" + filePath;
+//    }
 }

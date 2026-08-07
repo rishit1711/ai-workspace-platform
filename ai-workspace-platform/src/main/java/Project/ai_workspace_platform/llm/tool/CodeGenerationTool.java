@@ -11,10 +11,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CodeGenerationTool {
     private final ProjectFileService projectFileService;
-    private final Long projectId;
+
 
     @Tool
     public List<FileContentResponse> getFileContent(
+            Long projectId,
             List<String> paths
     ) {
 
