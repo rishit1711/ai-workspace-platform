@@ -23,7 +23,7 @@ public class ChatMessage {
     ChatSession chatSession;
     @Column(nullable = false)
     String content;
-    @OneToMany(mappedBy = "chatMessage",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chatMessage",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     List<ChatEvent> chatEventList;
     @Enumerated(EnumType.STRING)
      @Column(nullable = false)
