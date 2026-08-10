@@ -7,6 +7,8 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,6 +23,8 @@ public class ChatMessage {
     ChatSession chatSession;
     @Column(nullable = false)
     String content;
+    @OneToMany(mappedBy = "chatMessage",cascade = CascadeType.ALL)
+    List<ChatEvent> chatEventList;
     @Enumerated(EnumType.STRING)
      @Column(nullable = false)
     MessageRole role;
