@@ -15,7 +15,7 @@ import java.time.Instant;
 @Entity
 public class ChatMessage {
     @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     ChatSession chatSession;
