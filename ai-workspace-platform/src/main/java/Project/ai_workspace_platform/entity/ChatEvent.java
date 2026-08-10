@@ -18,7 +18,7 @@ public class ChatEvent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @ManyToOne(fetch = FetchType.LAZY)
-            @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false)
     ChatMessage chatMessage;
     @Column(nullable = false)
     Integer sequenceOrder;
