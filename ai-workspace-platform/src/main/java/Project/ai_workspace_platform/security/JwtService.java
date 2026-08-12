@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -93,6 +94,9 @@ public class JwtService {
         String email = getEmailFromToken(token);
 
         return email.equals(user.getEmail()) && !isTokenExpired(token);
+    }
+    public Long getCurrentUser(){
+        return ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId();
     }
 
 }
