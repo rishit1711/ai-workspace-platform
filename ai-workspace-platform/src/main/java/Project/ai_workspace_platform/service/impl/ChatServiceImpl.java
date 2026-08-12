@@ -1,9 +1,12 @@
 package Project.ai_workspace_platform.service.impl;
 
 import Project.ai_workspace_platform.dto.chat.ChatResponse;
+import Project.ai_workspace_platform.entity.ChatSession;
 import Project.ai_workspace_platform.entity.Project;
 import Project.ai_workspace_platform.exception.ResourceNotFoundException;
+import Project.ai_workspace_platform.mapper.ChatMapper;
 import Project.ai_workspace_platform.repository.ChatMessageRepository;
+import Project.ai_workspace_platform.repository.ChatSessionRepository;
 import Project.ai_workspace_platform.repository.ProjectRepository;
 import Project.ai_workspace_platform.security.JwtService;
 import Project.ai_workspace_platform.service.ChatService;
@@ -18,7 +21,9 @@ import java.util.List;
 public class ChatServiceImpl implements ChatService {
     private final ChatMessageRepository chatMessageRepository;
     private final ProjectRepository projectRepository;
+    private final ChatSessionRepository chatSessionRepository;
     private final JwtService jwtService;
+    private final ChatMapper chatMapper;
     @Override
     public List<ChatResponse> getProjectChatHistory(Long projectId) {
         Long userId = jwtService.getCurrentUser();
@@ -26,7 +31,13 @@ public class ChatServiceImpl implements ChatService {
         if(project.getOwner().getId()!=userId){
             throw new AccessDeniedException("NOT AUTHORIZED");
         }
+        ChatSession chatSession = chatSessionRepository.findByProjectId(projectId);
+        return chatMessageRepository.findByChatSession(chatSession)
+                .stream()
+                .map(chatMapper::toChatResponse)
+                .toList();
 
-        return List.of();
+
+
     }
 }
