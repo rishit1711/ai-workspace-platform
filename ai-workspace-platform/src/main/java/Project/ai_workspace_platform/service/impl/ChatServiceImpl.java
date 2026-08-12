@@ -31,7 +31,7 @@ public class ChatServiceImpl implements ChatService {
         if(project.getOwner().getId()!=userId){
             throw new AccessDeniedException("NOT AUTHORIZED");
         }
-        ChatSession chatSession = chatSessionRepository.findByProjectId(projectId);
+        ChatSession chatSession = chatSessionRepository.findByChatSessionIdProjectIdAndChatSessionIdUserId(projectId,userId);
         return chatMessageRepository.findByChatSession(chatSession)
                 .stream()
                 .map(chatMapper::toChatResponse)
