@@ -24,12 +24,12 @@ public class ChatMessage {
     @Column(nullable = false)
     String content;
     @OneToMany(mappedBy = "chatMessage",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    List<ChatEvent> chatEventList;
+    List<ChatEvent> events;
     @Enumerated(EnumType.STRING)
      @Column(nullable = false)
     MessageRole role;
     Integer tokenUsed;
     @CreationTimestamp
-    Instant CreatedAt;
+    Instant createdAt;
 
 }
