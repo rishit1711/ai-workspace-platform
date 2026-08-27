@@ -19,7 +19,7 @@ public class ProjectFile {
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "projectId")
     private Project project;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String path;
     private String minioObjectKey;
     @CreationTimestamp
